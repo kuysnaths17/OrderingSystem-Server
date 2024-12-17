@@ -15,9 +15,9 @@ exports.fetchItemsByCategory = async (req, res) => {
         const { category } = req.params;
         const items = await Item.find({ category }); // Fetch items by category
         if (items.length === 0) {
-            return res.status(404).json({ message: 'No items found for this category' });
+            return res.status(404).json({ message: 'No items found for this category', itemLength: items.length});
         }
-        res.status(200).json(items);
+        res.status(200).json({items, itemLength: items.length});
     } catch (error) {
         console.error(error); // Log the error for debugging
         res.status(500).json({ message: 'Error fetching items', error: error.message });
