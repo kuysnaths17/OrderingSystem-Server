@@ -31,3 +31,21 @@ exports.insertOrder = async (req, res) => {
         res.status(500).json({isCompleted: false, message: 'Error inserting order', error: error.message });
     }
 }
+
+exports.getOrderStatus = async (req, res) => {
+    try {
+        const { tableID } = req.params;
+        const order = await Order.findOne({ tableID: tableID })
+            .sort({ createdAt: -1 }) // Sort by createdAt in descending order
+            .limit(1); // Limit the result to 1 (latest order)
+        if (order) {
+            res.status(200).json({ message: 'Order found', order });
+        }
+        else {
+            res.status(404).json({ message: 'No order found for this table' });
+        }
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ message: 'Error fetching order status', error: error.message });
+    }
+}

@@ -5,6 +5,10 @@ const itemSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    itemImage: {
+        type: String,
+        required: true
+    },
     itemName: {
         type: String,
         required: true
@@ -35,6 +39,12 @@ const orderSchema = new mongoose.Schema({
     totalPrice: {
         type: Number,
         required: true
+    },
+    orderStatus: {
+        type: String,
+        required: true,
+        enum: ['pending', 'completed'],
+        default: 'pending'
     }
 }, {timestamps: true});
 

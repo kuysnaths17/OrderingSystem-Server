@@ -2,7 +2,7 @@ const express = require('express');
 const { createUser, loginUser } = require('../controllers/userController');
 const { fetchAllItems, fetchItemsByCategory } = require('../controllers/itemController');
 const { fetchAllTables } = require('../controllers/tableController');
-const { insertOrder } = require('../controllers/orderController');
+const { insertOrder, getOrderStatus } = require('../controllers/orderController');
 const router = express.Router();
 
 //Users
@@ -16,7 +16,8 @@ router.get('/fetchItemsByCategory/:category', fetchItemsByCategory);
 //Table
 router.get('/fetchAllTables', fetchAllTables);
 
-//insertOrder
+//Order
 router.post('/insertOrder', insertOrder);
+router.get('/getOrderStatus/:tableID', getOrderStatus);
 
 module.exports = router;
