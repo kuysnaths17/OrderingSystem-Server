@@ -28,6 +28,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    customerName:{
+        type: String,
+        required: true
+    },
     tableID: {
         type: String,
         default: null
@@ -47,7 +51,7 @@ const orderSchema = new mongoose.Schema({
     orderStatus: {
         type: String,
         required: true,
-        enum: ['pending', 'completed'],
+        enum: ['pending', 'complete'],
         default: 'pending'
     }
 }, {timestamps: true});
