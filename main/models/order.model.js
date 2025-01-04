@@ -32,6 +32,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    tableNumber: {
+        type: String,
+        default: null
+    },
     items: {
         type: [itemSchema],
         required: true
