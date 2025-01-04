@@ -20,7 +20,7 @@ exports.insertOrder = async (req, res) => {
         // Step 3: Update the status of the table
         await Table.findByIdAndUpdate(
             newOrder.tableID,
-            { status: 'reserved' }, // Change the table status to 'occupied'
+            { status: 'occupied' }, // Change the table status to 'occupied'
             { new: true }
         );
 
